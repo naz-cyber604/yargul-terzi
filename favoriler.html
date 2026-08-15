@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Favorilerim ❤️</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff5f9;
+    color: #333;
+}
+
+.baslik {
+    background: #ff1493;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.navigasyon {
+    text-align: center;
+    margin: 20px;
+}
+
+.navigasyon a {
+    display: inline-block;
+    background: #ff4f91;
+    color: white;
+    padding: 12px 25px;
+    margin: 5px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.navigasyon a:hover {
+    opacity: 0.85;
+}
+
+.favoriler {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.favori-urun {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.favori-urun img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.favori-bilgi {
+    flex: 1;
+}
+
+.favori-bilgi h2 {
+    color: #e91e63;
+    margin-top: 0;
+}
+
+.favori-bilgi h3 {
+    color: #ff1493;
+}
+
+.detay {
+    display: inline-block;
+    background: #9c27b0;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.sil {
+    background: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.bos {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.10);
+    color: #ff1493;
+    font-size: 20px;
+}
+
+@media(max-width:600px) {
+
+    .favori-urun {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .favori-urun img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .detay,
+    .sil {
+        display: block;
+        width: 100%;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="navigasyon">
+
+    <a href="urunler.html">
+        🛍️ Ürünler
+    </a>
+
+    <a href="index.html">
+        🏠 Anasayfa
+    </a>
+
+</div>
+
+<div class="baslik">
+    ❤️ Favorilerim
+</div>
+
+<div class="favoriler">
+
+    <div id="favori-listesi"></div>
+
+</div>
+
+
+<script>
+
+function favorileriGoster() {
+
+    let favoriler =
+        JSON.parse(localStorage.getItem("favoriler")) || [];
+
+    let alan =
+        document.getElementById("favori-listesi");
+
+    if (favoriler.length === 0) {
+
+        alan.innerHTML = `
+            <div class="bos">
+                ❤️ Henüz favori ürününüz yok.
+                <br><br>
+                <a href="urunler.html"
+                   style="
+                   display:inline-block;
+                   background:#ff1493;
+                   color:white;
+                   padding:12px 20px;
+                   border-radius:12px;
+                   text-decoration:none;
+                   font-weight:bold;">
+                   🛍️ Ürünlere Git
+                </a>
+            </div>
+        `;
+
+        return;
+    }
+
+    alan.innerHTML = "";
+
+    favoriler.forEach(function(urun, index) {
+
+        /*
+        Eski sistemde favoriler sadece
+        ürün adı olarak kaydediliyor.
+        Yeni sistemde ise obje olarak kaydediliyor.
+        İkisini de destekliyoruz.
+        */
+
+        if (typeof urun === "string") {
+
+            alan.innerHTML += `
+
+                <div class="favori-urun">
+
+                    <div class="favori-bilgi">
+
+                        <h2>
+                            ❤️ ${urun}
+                        </h2>
+
+                        <button
+                            class="sil"
+                            onclick="favoridenSil(${index})">
+                            🗑️ Favoriden Sil
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        } else {
+
+            alan.innerHTML += `
+
+                <div class="favori-urun">
+
+                    ${
+                        urun.resim
+                        ?
+                        `<img src="${urun.resim}"
+                              alt="${urun.ad || 'Favori ürün'}">`
+                        :
+                        ""
+                    }
+
+                    <div class="favori-bilgi">
+
+                        <h2>
+                            ❤️ ${urun.ad || "Favori Ürün"}
+                        </h2>
+
+                        <h3>
+                            ${urun.fiyat || ""}
+                        </h3>
+
+                        ${
+                            urun.detay
+                            ?
+                            `<a class="detay"
+                                href="${urun.detay}">
+                                🔎 Detayları Gör
+                             </a>`
+                            :
+                            ""
+                        }
+
+                        <button
+                            class="sil"
+                            onclick="favoridenSil(${index})">
+                            🗑️ Favoriden Sil
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+    });
+
+}
+
+
+function favoridenSil(index) {
+
+    let favoriler =
+        JSON.parse(localStorage.getItem("favoriler")) || [];
+
+    favoriler.splice(index, 1);
+
+    localStorage.setItem(
+        "favoriler",
+        JSON.stringify(favoriler)
+    );
+
+    favorileriGoster();
+
+}
+
+
+favorileriGoster();
+
+</script>
+
+</body>
+
+</html>

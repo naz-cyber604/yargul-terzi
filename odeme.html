@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ödeme ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff1f7;
+    color: #444;
+}
+
+header {
+    background: #ff1493;
+    color: white;
+    text-align: center;
+    padding: 28px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+.kutu {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+h2 {
+    color: #e91e63;
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 14px;
+    margin-top: 7px;
+    border: 2px solid #ff69b4;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.siparis {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.toplam {
+    text-align: right;
+    color: #e91e63;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 30px;
+    background: #ff1493;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #e60083;
+}
+
+.geri {
+    background: #ffc400;
+    color: #333;
+}
+
+#mesaj {
+    text-align: center;
+    color: #e91e63;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    💳 Ödeme
+</header>
+
+<div class="container">
+
+    <div class="kutu">
+        <h2>📦 Sipariş Bilgileriniz</h2>
+
+        <div id="siparis-listesi"></div>
+
+        <div class="toplam" id="toplam">
+            Toplam: ₺0
+        </div>
+    </div>
+
+
+    <div class="kutu">
+
+        <h2>👤 Teslimat Bilgileri</h2>
+
+        <label>Ad Soyad</label>
+        <input type="text" id="adsoyad" placeholder="Adınız ve soyadınız">
+
+        <label>Telefon</label>
+        <input type="tel" id="telefon" placeholder="05XX XXX XX XX">
+
+        <label>Adres</label>
+        <textarea id="adres" placeholder="Teslimat adresiniz"></textarea>
+
+        <label>Ödeme Yöntemi</label>
+
+        <select id="odeme">
+            <option value="">Ödeme yöntemi seçin</option>
+            <option>Kapıda Ödeme</option>
+            <option>Kredi / Banka Kartı</option>
+        </select>
+
+        <button onclick="siparisiTamamla()">
+            🛍️ Siparişi Tamamla
+        </button>
+
+        <button class="geri" onclick="history.back()">
+            ← Sepete Dön
+        </button>
+
+        <div id="mesaj"></div>
+
+    </div>
+
+<script>
+
+let sepet = JSON.parse(localStorage.getItem("sepet")) || [];
+
+function siparisiGoster() {
+
+    let liste = "";
+    let toplam = 0;
+
+    if (sepet.length === 0) {
+
+        liste = "<p>Sepetiniz boş. 🛒</p>";
+
+    } else {
+
+        sepet.forEach(function(urun) {
+
+            let fiyat = Number(urun.fiyat);
+            let adet = Number(urun.adet);
+
+            let urunToplam = fiyat * adet;
+
+            toplam += urunToplam;
+
+            liste += `
+                <div class="siparis">
+
+                    <span>
+                        ${urun.isim} × ${adet}
+                    </span>
+
+                    <strong>
+                        ₺${urunToplam}
+                    </strong>
+
+                </div>
+            `;
+        });
+    }
+
+    document.getElementById("siparis-listesi").innerHTML = liste;
+
+    document.getElementById("toplam").innerHTML =
+        "Toplam: ₺" + toplam;
+}
+
+
+function siparisiTamamla() {
+
+    let adsoyad =
+        document.getElementById("adsoyad").value.trim();
+
+    let telefon =
+        document.getElementById("telefon").value.trim();
+
+    let adres =
+        document.getElementById("adres").value.trim();
+
+    let odeme =
+        document.getElementById("odeme").value;
+
+
+    if (sepet.length === 0) {
+
+        alert("Sepetiniz boş. 🛒");
+        return;
+    }
+
+
+    if (
+        adsoyad === "" ||
+        telefon === "" ||
+        adres === "" ||
+        odeme === ""
+    ) {
+
+        alert("Lütfen tüm bilgileri doldurun. ❤️");
+        return;
+    }
+
+
+    if (odeme === "Kredi / Banka Kartı") {
+
+        localStorage.setItem(
+            "musteriAdSoyad",
+            adsoyad
+        );
+
+        localStorage.setItem(
+            "musteriTelefon",
+            telefon
+        );
+
+        localStorage.setItem(
+            "musteriAdres",
+            adres
+        );
+
+        window.location.href = "kart-odeme.html";
+
+        return;
+    }
+
+
+    if (odeme === "Kapıda Ödeme") {
+
+        document.getElementById("mesaj").innerHTML =
+            "🎉 Siparişiniz başarıyla oluşturuldu!<br>" +
+            "❤️ Bizi tercih ettiğiniz için teşekkür ederiz.";
+
+        localStorage.removeItem("sepet");
+
+        sepet = [];
+    }
+}
+
+
+siparisiGoster();
+
+</script>
+</div>
+</body>
+</html>

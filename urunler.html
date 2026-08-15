@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Yargül Terzi | Ürünler</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:20px;
+    font-family:Arial,sans-serif;
+    background:#fff5f8;
+    color:#333;
+}
+
+/* BAŞLIK */
+
+.baslik{
+    text-align:center;
+    margin:20px auto 35px;
+}
+
+.baslik h1{
+    color:#e91e63;
+    margin-bottom:8px;
+}
+
+.baslik p{
+    color:#777;
+    font-size:17px;
+}
+
+/* ÜST MENÜ */
+
+.ust-menu{
+    text-align:center;
+    margin:20px auto 30px;
+}
+
+.ust-menu a{
+    display:inline-block;
+    background:#e91e63;
+    color:white;
+    padding:12px 22px;
+    border-radius:25px;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:bold;
+    margin:5px;
+}
+
+.ust-menu a:hover{
+    opacity:.85;
+}
+
+/* ÜRÜNLER */
+
+#urunler{
+    width:100%;
+    padding:10px;
+}
+
+.urun{
+    max-width:1000px;
+    margin:30px auto;
+    background:white;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    padding:20px;
+
+    display:flex;
+    gap:30px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.urun img{
+    width:300px;
+    height:300px;
+    max-width:100%;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.urun-bilgi{
+    flex:1;
+    min-width:250px;
+}
+
+.urun-bilgi h2{
+    color:#e91e63;
+    margin:0 0 12px;
+}
+
+.urun p{
+    color:#555;
+    font-size:17px;
+    line-height:1.6;
+}
+
+.fiyat{
+    color:#ff1493 !important;
+    font-size:25px !important;
+    font-weight:bold;
+}
+
+/* BUTONLAR */
+
+.urun button,
+.urun a{
+    display:inline-block;
+    margin:6px 4px 6px 0;
+    padding:11px 15px;
+    border:none;
+    border-radius:10px;
+    background:#e91e63;
+    color:white;
+    text-decoration:none;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.urun button:hover,
+.urun a:hover{
+    opacity:.85;
+}
+
+.favori-btn{
+    background:#ff4f91 !important;
+}
+
+.detay-btn{
+    background:#9c27b0 !important;
+}
+
+.sepet-btn{
+    background:#e91e63 !important;
+}
+
+/* SEPET */
+
+#sepet{
+    display:none;
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:350px;
+    max-width:90%;
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 5px 25px rgba(0,0,0,.25);
+    z-index:9999;
+}
+
+#sepet button{
+    background:#e91e63;
+    color:white;
+    border:0;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* MOBİL */
+
+@media(max-width:600px){
+
+    body{
+        padding:10px;
+    }
+
+    .urun{
+        margin:20px auto;
+        padding:15px;
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .urun img{
+        width:100%;
+        max-width:350px;
+        height:auto;
+        margin:auto;
+    }
+
+    .urun-bilgi{
+        min-width:0;
+        width:100%;
+    }
+
+    .urun-bilgi h2{
+        text-align:center;
+    }
+
+    .urun button,
+    .urun a{
+        width:100%;
+        margin:5px 0;
+        text-align:center;
+    }
+
+    #sepet{
+        top:10px;
+        right:5%;
+        width:90%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ÜST MENÜ -->
+
+<div class="ust-menu">
+
+    <a href="index.html">
+        🏠 Anasayfa
+    </a>
+
+    <a href="favoriler.html">
+        ❤️ Favorilerim
+    </a>
+
+    <a href="sepet.html">
+        🛒 Sepetim
+    </a>
+
+</div>
+
+
+<!-- BAŞLIK -->
+
+<div class="baslik">
+
+    <h1>
+        🛍️ Yargül Terzi Ürünleri
+    </h1>
+
+    <p>
+        ✨ Evinize şıklık katan dokunuşlar ✨
+    </p>
+
+</div>
+
+
+<!-- ÜRÜNLER -->
+
+<div id="urunler">
+
+
+<!-- KİREMİT -->
+
+<div class="urun">
+
+    <img src="kiremit.jpg"
+         alt="Premium Kiremit Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>🌼 Premium Kiremit Pike Takımı</h2>
+
+        <p>
+            Yumuşak dokusu ve zarif kiremit desenleriyle
+            yatak odanıza şıklık katın.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button class="favori-btn"
+        onclick="favoriyeEkle(
+        'Premium Kiremit Pike Takımı',
+        2699,
+        'kiremit.jpg',
+        'kiremit-detay.html'
+        )">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="kiremit-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button onclick="sepeteEkle('Premium Kiremit Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- DAISY -->
+
+<div class="urun">
+
+    <img src="daisy.jpg"
+         alt="Daisy Dream Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>🌼 Daisy Dream Pike Takımı</h2>
+
+        <p>
+            Yumuşak dokusu ve papatya desenleriyle
+            yatak odanıza şıklık katın.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button class="favori-btn"
+        onclick="favoriyeEkle(
+        'Daisy Dream Pike Takımı',
+        2699,
+        'daisy.jpg',
+        'daisy-detay.html'
+        )">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="daisy-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button onclick="sepeteEkle('Daisy Dream Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- LAVİNYA -->
+
+<div class="urun">
+
+    <img src="lavinya.jpg"
+         alt="Lavinya Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>🌸 Lavinya Pike Takımı</h2>
+
+        <p>
+            Yumuşak dokusu ve zarif mavi çiçek desenleriyle
+            yatak odanıza şıklık katın.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button class="favori-btn"
+        onclick="favoriyeEkle(
+        'Lavinya Pike Takımı',
+        2699,
+        'lavinya.jpg',
+        'lavinya-detay.html'
+        )">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="lavinya-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button onclick="sepeteEkle('Lavinya Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- PEMBE RÜYA -->
+
+<div class="urun">
+
+    <img src="pembe-ruya.jpg"
+         alt="Pembe Rüya Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>🌷 Pembe Rüya Pike Takımı</h2>
+
+        <p>
+            Pembe tonlarının zarafeti ve çiçek desenleriyle
+            yatak odanıza huzurlu bir görünüm kazandırır.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button class="favori-btn"
+        onclick="favoriyeEkle(
+        'Pembe Rüya Pike Takımı',
+        2699,
+        'pembe-ruya.jpg',
+        'pembe-ruya-detay.html'
+        )">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="pembe-ruya-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button onclick="sepeteEkle('Pembe Rüya Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- PUDRA -->
+
+<div class="urun">
+
+    <img src="pudra.jpg"
+         alt="Pudra Esintisi Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>🌸 Pudra Esintisi Pike Takımı</h2>
+
+        <p>
+            Yumuşak pudra tonları ve zarif geometrik desenleriyle
+            şık bir atmosfer kazandırır.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Tek kişilik</p>
+
+        <h2 class="fiyat">₺1699</h2>
+
+        <button class="favori-btn"
+        onclick="favoriyeEkle(
+        'Pudra Esintisi Pike Takımı',
+        1699,
+        'pudra.jpg',
+        'pudra-esintisi-detay.html'
+        )">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="pudra-esintisi-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button onclick="sepeteEkle('Pudra Esintisi Pike Takımı',1699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- PEMBE ÇİÇEK -->
+
+<div class="urun">
+
+    <img src="pembe-cicek.jpg"
+         alt="Pembe Çiçek Bahçesi Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>🌸 Pembe Çiçek Bahçesi Pike Takımı</h2>
+
+        <p>
+            Zarif pembe çiçek desenleri ve yumuşak dokusuyla
+            ferah bir görünüm kazandırır.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button class="favori-btn"
+        onclick="favoriyeEkle(
+        'Pembe Çiçek Bahçesi Pike Takımı',
+        2699,
+        'pembe-cicek.jpg',
+        'pembe-cicek-detay.html'
+        )">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="pembe-cicek-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button onclick="sepeteEkle('Pembe Çiçek Bahçesi Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- LAVANTA -->
+
+<div class="urun">
+
+    <img src="lavanta.jpg"
+         alt="Lavanta Çiçek Bahçesi Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>💜 Lavanta Çiçek Bahçesi Pike Takımı</h2>
+
+        <p>
+            Doğadan ilham alan lavanta desenleriyle
+            yatak odanıza huzur ve ferahlık katın.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button class="favori-btn"
+        onclick="favoriyeEkle(
+        'Lavanta Çiçek Bahçesi Pike Takımı',
+        2699,
+        'lavanta.jpg',
+        'lavanta-cicek-detay.html'
+        )">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="lavanta-cicek-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button onclick="sepeteEkle('Lavanta Çiçek Bahçesi Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<-!- GRİ İNCİ -->
+
+<div class="urun">
+
+    <img src="gri-inci.jpg"
+         alt="Gri İnci Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>
+            🩶 Gri İnci Pike Takımı
+        </h2>
+
+        <p>
+            Modern gri desenleri ve yumuşacık dokusuyla
+            sade ve şık bir görünüm kazandırır.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">
+            ₺2699
+        </h2>
+
+        <button
+            class="favori-btn"
+            onclick="favoriyeEkle('Gri İnci Pike Takımı')">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="#"
+           onclick="alert('Bu ürünün detay sayfası henüz oluşturulmadı.'); return false;">
+            🔎 Detayları Gör
+        </a>
+
+        <button
+            class="sepet-btn"
+            onclick="sepeteEkle('Gri İnci Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+<!-- LUNA -->
+
+<div class="urun">
+
+    <img src="luna.jpg"
+         alt="Luna Çiçek Bahçesi Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>
+            🌸 Luna Çiçek Bahçesi Pike Takımı
+        </h2>
+
+        <p>
+            Zarif pembe çiçek desenleriyle yatak odanıza
+            ferah ve huzurlu bir atmosfer katar.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">
+            ₺2699
+        </h2>
+
+        <button
+            class="favori-btn"
+            onclick="favoriyeEkle('Luna Çiçek Bahçesi Pike Takımı')">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="#"
+           onclick="alert('Bu ürünün detay sayfası henüz oluşturulmadı.'); return false;">
+            🔎 Detayları Gör
+        </a>
+
+        <button
+            class="sepet-btn"
+            onclick="sepeteEkle('Luna Çiçek Bahçesi Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+<!-- PEMBE ZERAFET -->
+
+<div class="urun">
+
+    <img src="pembe-zerafet.jpg"
+         alt="Pembe Zerafet Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>
+            🌷 Pembe Zerafet Pike Takımı
+        </h2>
+
+        <p>
+            Pudra pembe zemini ve zarif beyaz çiçek desenleriyle
+            sıcak ve ferah bir hava katar.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">
+            ₺2699
+        </h2>
+
+        <button
+            class="favori-btn"
+            onclick="favoriyeEkle('Pembe Zerafet Pike Takımı')">
+            ♡ Favorilere Ekle
+        </button>
+
+        <a class="detay-btn"
+           href="#"
+           onclick="alert('Bu ürünün detay sayfası henüz oluşturulmadı.'); return false;">
+            🔎 Detayları Gör
+        </a>
+
+        <button
+            class="sepet-btn"
+            onclick="sepeteEkle('Pembe Zerafet Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+<!-- =========================
+     GRİ İNCİ
+========================= -->
+
+<div class="urun">
+
+    <img src="gri-inci.jpg" alt="Gri İnci Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>🩶 Gri İnci Pike Takımı</h2>
+
+        <p>
+            Modern gri desenleri ve yumuşacık dokusuyla
+            sade ve şık bir görünüm kazandırır.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button
+            type="button"
+            class="favori-btn"
+            onclick="favoriyeEkle('Gri İnci Pike Takımı',2699,'gri-inci.jpg','gri-inci-detay.html')">
+            ❤️ Favorilere Ekle
+        </button>
+
+        <a
+            class="detay-btn"
+            href="gri-inci-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button
+            type="button"
+            class="sepet-btn"
+            onclick="sepeteEkle('Gri İnci Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     LUNA
+========================= -->
+
+<div class="urun">
+
+    <img src="luna.jpg" alt="Luna Çiçek Bahçesi Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>🌸 Luna Çiçek Bahçesi Pike Takımı</h2>
+
+        <p>
+            Zarif pembe çiçek desenleriyle yatak odanıza
+            ferah ve huzurlu bir atmosfer katar.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button
+            type="button"
+            class="favori-btn"
+            onclick="favoriyeEkle('Luna Çiçek Bahçesi Pike Takımı',2699,'luna.jpg','luna-detay.html')">
+            ❤️ Favorilere Ekle
+        </button>
+
+        <a
+            class="detay-btn"
+            href="luna-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button
+            type="button"
+            class="sepet-btn"
+            onclick="sepeteEkle('Luna Çiçek Bahçesi Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     PEMBE ZERAFET
+========================= -->
+
+<div class="urun">
+
+    <img src="pembe-zerafet.jpg" alt="Pembe Zerafet Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>🌷 Pembe Zerafet Pike Takımı</h2>
+
+        <p>
+            Pudra pembe zemini ve zarif beyaz çiçek desenleriyle
+            sıcak ve ferah bir hava katar.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button
+            type="button"
+            class="favori-btn"
+            onclick="favoriyeEkle('Pembe Zerafet Pike Takımı',2699,'pembe-zerafet.jpg','pembe-zerafet-detay.html')">
+            ❤️ Favorilere Ekle
+        </button>
+
+        <a
+            class="detay-btn"
+            href="pembe-zerafet-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button
+            type="button"
+            class="sepet-btn"
+            onclick="sepeteEkle('Pembe Zerafet Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAVİ BAHAR
+========================= -->
+
+<div class="urun">
+
+    <img src="mavi-bahar.jpg" alt="Mavi Bahar Pike Takımı">
+
+    <div class="urun-bilgi">
+
+        <h2>💙 Mavi Bahar Pike Takımı</h2>
+
+        <p>
+            Pastel mavi zemini ve zarif beyaz çiçek desenleriyle
+            ferah ve huzurlu bir atmosfer kazandırır.
+        </p>
+
+        <p>✔️ Yumuşak ve kaliteli kumaş</p>
+        <p>✔️ Şık modern tasarım</p>
+        <p>✔️ Kolay yıkanabilir</p>
+        <p>✔️ Çift kişilik</p>
+
+        <h2 class="fiyat">₺2699</h2>
+
+        <button
+            type="button"
+            class="favori-btn"
+            onclick="favoriyeEkle('Mavi Bahar Pike Takımı',2699,'mavi-bahar.jpg','mavi-bahar-detay.html')">
+            ❤️ Favorilere Ekle
+        </button>
+
+        <a
+            class="detay-btn"
+            href="mavi-bahar-detay.html">
+            🔎 Detayları Gör
+        </a>
+
+        <button
+            type="button"
+            class="sepet-btn"
+            onclick="sepeteEkle('Mavi Bahar Pike Takımı',2699)">
+            🛒 Sepete Ekle
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+
+<>
+
+
+   <script>
+
+/* =========================
+   SEPET SİSTEMİ
+========================= */
+
+let sepet =
+    JSON.parse(localStorage.getItem("sepet")) || [];
+
+function sepeteEkle(isim, fiyat) {
+
+    let bulunan = sepet.find(function(urun) {
+        return urun.isim === isim;
+    });
+
+    if (bulunan) {
+        bulunan.adet++;
+    } else {
+        sepet.push({
+            isim: isim,
+            fiyat: fiyat,
+            adet: 1
+        });
+    }
+
+    localStorage.setItem(
+        "sepet",
+        JSON.stringify(sepet)
+    );
+
+    alert("🛒 Ürün sepete eklendi!");
+
+    window.location.href = "sepet.html";
+}
+
+
+/* =========================
+   FAVORİ SİSTEMİ
+========================= */
+
+function favoriyeEkle(isim, fiyat, resim, detay) {
+
+    let favoriler =
+        JSON.parse(localStorage.getItem("favoriler")) || [];
+
+    let zatenVar = favoriler.some(function(urun) {
+        return urun.id === isim;
+    });
+
+    if (zatenVar) {
+
+        alert("❤️ Bu ürün zaten favorilerde!");
+
+        return;
+    }
+
+    favoriler.push({
+
+        id: isim,
+
+        ad: isim,
+
+        fiyat: "₺" + fiyat,
+
+        resim: resim,
+
+        detay: detay
+
+    });
+
+    localStorage.setItem(
+        "favoriler",
+        JSON.stringify(favoriler)
+    );
+
+    alert("❤️ Ürün favorilere eklendi!");
+}
+
+
+/* =========================
+   SAYFA AÇILINCA
+========================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    document.querySelectorAll(".favori-btn").forEach(function(btn) {
+
+        btn.addEventListener("click", function() {
+
+            let kart = btn.closest(".urun");
+
+            if (!kart) return;
+
+            let baslik =
+                kart.querySelector(".urun-bilgi h2");
+
+            let fiyat =
+                kart.querySelector(".fiyat");
+
+            let resim =
+                kart.querySelector("img");
+
+            let detay =
+                kart.querySelector(".detay-btn");
+
+            let isim =
+                baslik
+                ? baslik.innerText.trim()
+                : "Ürün";
+
+            let fiyatMetin =
+                fiyat
+                ? fiyat.innerText.replace("₺", "").trim()
+                : "0";
+
+            let fiyatSayi =
+                parseInt(fiyatMetin) || 0;
+
+            let resimYolu =
+                resim
+                ? resim.getAttribute("src")
+                : "";
+
+            let detayYolu =
+                detay
+                ? detay.getAttribute("href")
+                : "#";
+
+            favoriyeEkle(
+                isim,
+                fiyatSayi,
+                resimYolu,
+                detayYolu
+            );
+
+        });
+
+    });
+
+});
+
+</script>
+
+</div>
+
+</body>
+
+</html>

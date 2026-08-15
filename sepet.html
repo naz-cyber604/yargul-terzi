@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sepetim 🛒 | Yargül Terzi</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #fff5f8;
+    color: #333;
+}
+
+/* BAŞLIK */
+
+.baslik {
+    text-align: center;
+    background: #e91e63;
+    color: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+}
+
+.baslik h1 {
+    margin: 0;
+}
+
+/* NAVİGASYON */
+
+.navigasyon {
+    text-align: center;
+    margin: 20px;
+}
+
+.navigasyon a {
+    display: inline-block;
+    background: #ff4f91;
+    color: white;
+    padding: 12px 22px;
+    margin: 5px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* SEPET */
+
+.sepet {
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.urun {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.urun-bilgi h2 {
+    color: #e91e63;
+    margin: 0 0 10px;
+}
+
+.fiyat {
+    color: #ff1493;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.adet {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.adet button {
+    background: #e91e63;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.sil {
+    background: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* TOPLAM */
+
+.toplam {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.toplam h2 {
+    color: #e91e63;
+}
+
+.satin-al {
+    display: inline-block;
+    background: #e91e63;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* BOŞ SEPET */
+
+.bos {
+    background: white;
+    padding: 50px 20px;
+    border-radius: 20px;
+    text-align: center;
+    color: #ff1493;
+    font-size: 21px;
+}
+
+/* MOBİL */
+
+@media(max-width:600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .urun {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .adet {
+        justify-content: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVİGASYON -->
+
+<div class="navigasyon">
+
+    <a href="index.html">
+        🏠 Anasayfa
+    </a>
+
+    <a href="urunler.html">
+        🛍️ Ürünler
+    </a>
+
+    <a href="favoriler.html">
+        ❤️ Favoriler
+    </a>
+
+</div>
+
+
+<!-- BAŞLIK -->
+
+<div class="baslik">
+
+    <h1>🛒 Sepetim</h1>
+
+</div>
+
+
+<!-- SEPET -->
+
+<div class="sepet">
+
+    <div id="sepet-listesi"></div>
+
+    <div class="toplam">
+
+        <h2 id="toplam">
+            Toplam: ₺0
+        </h2>
+
+        <a href="kart-odeme.html"
+           class="satin-al">
+            💳 Ödemeye Geç
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* SEPETİ LOCALSTORAGE'DAN AL */
+
+let sepet =
+    JSON.parse(localStorage.getItem("sepet")) || [];
+
+
+/* SEPETİ GÖSTER */
+
+function sepetiGoster() {
+
+    let alan =
+        document.getElementById("sepet-listesi");
+
+    let toplam =
+        0;
+
+
+    /* SEPET BOŞSA */
+
+    if (sepet.length === 0) {
+
+        alan.innerHTML = `
+            <div class="bos">
+
+                🛒 Sepetiniz şu anda boş.
+
+                <br><br>
+
+                <a href="urunler.html"
+                   style="
+                   display:inline-block;
+                   background:#e91e63;
+                   color:white;
+                   padding:12px 25px;
+                   border-radius:25px;
+                   text-decoration:none;
+                   font-weight:bold;">
+
+                    🛍️ Ürünlere Git
+
+                </a>
+
+            </div>
+        `;
+
+        document.getElementById("toplam").innerHTML =
+            "Toplam: ₺0";
+
+        return;
+    }
+
+
+    /* ÜRÜNLERİ TEMİZLE */
+
+    alan.innerHTML = "";
+
+
+    /* ÜRÜNLERİ OLUŞTUR */
+
+    sepet.forEach(function(urun, index) {
+
+        let urunToplam =
+            urun.fiyat * urun.adet;
+
+        toplam += urunToplam;
+
+
+        alan.innerHTML += `
+
+            <div class="urun">
+
+                <div class="urun-bilgi">
+
+                    <h2>
+                        🛏️ ${urun.isim}
+                    </h2>
+
+                    <div class="fiyat">
+                        ₺${urun.fiyat}
+                    </div>
+
+                </div>
+
+
+                <div class="adet">
+
+                    <button
+                        onclick="adetAzalt(${index})">
+                        −
+                    </button>
+
+                    <strong>
+                        ${urun.adet}
+                    </strong>
+
+                    <button
+                        onclick="adetArtir(${index})">
+                        +
+                    </button>
+
+                </div>
+
+
+                <strong>
+                    ₺${urunToplam}
+                </strong>
+
+
+                <button
+                    class="sil"
+                    onclick="urunuSil(${index})">
+
+                    🗑️ Sil
+
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+
+    /* TOPLAM */
+
+    document.getElementById("toplam").innerHTML =
+        "Toplam: ₺" + toplam;
+
+}
+
+
+/* ADET ARTIR */
+
+function adetArtir(index) {
+
+    sepet[index].adet++;
+
+    kaydet();
+
+}
+
+
+/* ADET AZALT */
+
+function adetAzalt(index) {
+
+    sepet[index].adet--;
+
+    if (sepet[index].adet <= 0) {
+
+        sepet.splice(index, 1);
+
+    }
+
+    kaydet();
+
+}
+
+
+/* ÜRÜNÜ SİL */
+
+function urunuSil(index) {
+
+    sepet.splice(index, 1);
+
+    kaydet();
+
+}
+
+
+/* LOCALSTORAGE'A KAYDET */
+
+function kaydet() {
+
+    localStorage.setItem(
+        "sepet",
+        JSON.stringify(sepet)
+    );
+
+    sepetiGoster();
+
+}
+
+
+/* SAYFA AÇILINCA */
+
+sepetiGoster();
+
+</script>
+
+</body>
+
+</html>

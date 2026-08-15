@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna Çiçek Bahçesi Pike Takımı</title>
+
+<style>
+body{
+    margin:0;
+    padding:20px;
+    font-family:Arial,sans-serif;
+    background:#fff5f8;
+    color:#333;
+}
+
+.geri{
+    display:block;
+    width:max-content;
+    margin:10px auto 25px;
+    padding:12px 20px;
+    background:#e91e63;
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:bold;
+}
+
+.urun-detay{
+    max-width:900px;
+    margin:30px auto;
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.urun-detay img{
+    display:block;
+    width:100%;
+    max-width:450px;
+    height:450px;
+    object-fit:cover;
+    margin:auto;
+    border-radius:20px;
+}
+
+h1{
+    color:#e91e63;
+    text-align:center;
+}
+
+.fiyat{
+    color:#ff1493;
+    font-size:28px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.aciklama{
+    font-size:17px;
+    line-height:1.7;
+}
+
+.ozellikler{
+    background:#fff0f6;
+    padding:20px;
+    border-radius:15px;
+    margin:20px 0;
+}
+
+button,.but{
+    display:inline-block;
+    padding:13px 20px;
+    margin:5px;
+    border:none;
+    border-radius:12px;
+    color:white;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.favori{background:#ff4f91;}
+.sepet{background:#e91e63;}
+.urunler{background:#9c27b0;}
+
+.butonlar{
+    text-align:center;
+    margin-top:25px;
+}
+
+@media(max-width:600px){
+    .urun-detay{
+        padding:20px;
+    }
+
+    .urun-detay img{
+        height:auto;
+    }
+
+    button,.but{
+        width:100%;
+        margin:5px 0;
+        box-sizing:border-box;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<a href="urunler.html" class="geri">🛍️ Ürünlere Dön</a>
+
+<div class="urun-detay">
+
+<img src="luna.jpg" alt="Luna Çiçek Bahçesi Pike Takımı">
+
+<h1>🌸 Luna Çiçek Bahçesi Pike Takımı</h1>
+
+<div class="fiyat">₺2699</div>
+
+<div class="aciklama">
+<p>
+Zarif pembe çiçek desenleriyle Luna Çiçek Bahçesi
+Pike Takımı, yatak odanıza ferah ve huzurlu
+bir atmosfer kazandırır.
+</p>
+</div>
+
+<div class="ozellikler">
+<h2>✨ Ürün Özellikleri</h2>
+<p>✔️ Yumuşak ve kaliteli kumaş</p>
+<p>✔️ Şık modern tasarım</p>
+<p>✔️ Kolay yıkanabilir</p>
+<p>✔️ Çift kişilik</p>
+</div>
+
+<div class="butonlar">
+
+<button class="favori" onclick="favoriyeEkle()">
+♡ Favorilere Ekle
+</button>
+
+<button class="sepet" onclick="sepeteEkle()">
+🛒 Sepete Ekle
+</button>
+
+<a href="urunler.html" class="but urunler">
+🛍️ Diğer Ürünler
+</a>
+
+</div>
+</div>
+
+<script>
+
+function favoriyeEkle(){
+
+let favoriler =
+JSON.parse(localStorage.getItem("favoriler")) || [];
+
+let urun={
+id:"Luna Çiçek Bahçesi Pike Takımı",
+ad:"Luna Çiçek Bahçesi Pike Takımı",
+fiyat:"₺2699",
+resim:"luna.jpg",
+detay:"luna-detay.html"
+};
+
+let varMi=favoriler.some(function(item){
+return item.id===urun.id;
+});
+
+if(varMi){
+alert("❤️ Bu ürün zaten favorilerde!");
+return;
+}
+
+favoriler.push(urun);
+
+localStorage.setItem(
+"favoriler",
+JSON.stringify(favoriler)
+);
+
+alert("❤️ Ürün favorilere eklendi!");
+
+}
+
+function sepeteEkle(){
+
+let sepet =
+JSON.parse(localStorage.getItem("sepet")) || [];
+
+let bulunan=sepet.find(function(urun){
+return urun.isim==="Luna Çiçek Bahçesi Pike Takımı";
+});
+
+if(bulunan){
+bulunan.adet++;
+}else{
+sepet.push({
+isim:"Luna Çiçek Bahçesi Pike Takımı",
+fiyat:2699,
+adet:1
+});
+}
+
+localStorage.setItem(
+"sepet",
+JSON.stringify(sepet)
+);
+
+alert("🛒 Ürün sepete eklendi!");
+
+window.location.href="sepet.html";
+}
+
+</script>
+
+</body>
+</html>

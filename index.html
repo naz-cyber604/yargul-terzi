@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Yargül Terzi</title>
+
+<meta name="description"
+      content="Yargül Terzi - Şık ve kaliteli pike takımları">
+
+<style>
+
+/* =========================
+   GENEL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        180deg,
+        #fff0f6,
+        #ffffff
+    );
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* =========================
+   DUYURU
+========================= */
+
+.duyuru {
+    width: 100%;
+    background: #ff4fa3;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    width: 100%;
+
+    background: #ff1493;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px;
+
+    box-shadow:
+        0 4px 12px rgba(255,20,147,.35);
+
+    flex-wrap: wrap;
+}
+
+nav button,
+nav a {
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    padding: 10px 14px;
+
+    border-radius: 25px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+nav button:hover,
+nav a:hover {
+    background: #ffcc00;
+    color: #e91e63;
+}
+
+/* SEPET */
+
+#sepetikon {
+    background: white;
+
+    color: #e91e63;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border: none;
+}
+
+#sepet-sayi {
+    background: #ff1493;
+
+    color: white;
+
+    border-radius: 50%;
+
+    padding: 3px 8px;
+
+    margin-left: 5px;
+}
+
+/* =========================
+   BAŞLIK
+========================= */
+
+header {
+    text-align: center;
+
+    padding: 30px 15px;
+}
+
+header h1 {
+    margin: 10px 0;
+
+    color: #ff1493;
+
+    font-size: 34px;
+}
+
+.marka-slogani {
+    color: #e91e63;
+
+    font-size: 19px;
+
+    font-weight: bold;
+}
+
+/* =========================
+   HOŞ GELDİN
+========================= */
+
+.hosgeldin {
+    width: calc(100% - 30px);
+
+    max-width: 900px;
+
+    margin: 20px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 25px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 20px rgba(255,105,180,.25);
+}
+
+.hosgeldin h2 {
+    color: #e91e63;
+
+    margin-top: 0;
+}
+
+.hosgeldin p {
+    color: #555;
+
+    line-height: 1.6;
+}
+
+/* =========================
+   ANA BUTONLAR
+========================= */
+
+.urun-butons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+}
+
+.urun-butons button {
+    border: none;
+
+    background: #ffcc00;
+
+    color: #333;
+
+    padding: 13px 22px;
+
+    border-radius: 30px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.urun-butons button:hover {
+    background: #ff1493;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   ARAMA
+========================= */
+
+.arama-kutusu {
+    width: calc(100% - 30px);
+
+    max-width: 650px;
+
+    margin: 25px auto;
+
+    display: flex;
+
+    gap: 8px;
+}
+
+#arama {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 14px 18px;
+
+    border: 2px solid #ff1493;
+
+    border-radius: 30px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.arama-kutusu button {
+    border: none;
+
+    background: #ff1493;
+
+    color: white;
+
+    padding: 0 20px;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+/* =========================
+   ÜRÜNLER
+========================= */
+
+#urunler {
+    display: none;
+
+    width: 100%;
+
+    padding: 20px;
+
+    max-width: 1250px;
+
+    margin: auto;
+}
+
+#urunler.baslik-acik {
+    display: block;
+}
+
+.urun-baslik {
+    text-align: center;
+
+    color: #e91e63;
+
+    margin-bottom: 25px;
+}
+
+/* ÜRÜN GRID */
+
+.urun-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 25px;
+
+    align-items: stretch;
+}
+
+/* =========================
+   ÜRÜN KARTI
+========================= */
+
+.urun-karti {
+    width: 100%;
+
+    background: white;
+
+    border: 2px solid #ff69b4;
+
+    border-radius: 20px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 15px rgba(255,105,180,.22);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: .3s;
+
+    overflow: hidden;
+}
+
+.urun-karti:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 25px rgba(255,105,180,.32);
+}
+
+/* RESİM */
+
+.urun-karti img {
+    width: 100%;
+
+    height: 230px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+
+    display: block;
+}
+
+/* ÜRÜN ADI */
+
+.urun-karti h3 {
+    color: #e91e63;
+
+    font-size: 20px;
+
+    line-height: 1.3;
+
+    min-height: 52px;
+
+    margin: 15px 0 8px;
+}
+
+/* AÇIKLAMA */
+
+.urun-aciklama {
+    color: #555;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    min-height: 70px;
+
+    margin: 5px 0;
+}
+
+/* ÖZELLİKLER */
+
+.urun-ozellik {
+    color: #555;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin: 5px 0;
+}
+
+/* FİYAT */
+
+.fiyat {
+    color: #ff1493;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    margin: 12px 0;
+}
+
+/* BUTON ALANI */
+
+.urun-butonlari {
+    margin-top: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+/* FAVORİ */
+
+.favori-btn {
+    width: 100%;
+
+    background: white;
+
+    color: #e91e63;
+
+    border: 2px solid #e91e63;
+
+    border-radius: 25px;
+
+    padding: 11px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.favori-btn:hover {
+    background: #e91e63;
+
+    color: white;
+}
+
+/* DETAY */
+
+.detay-btn {
+    width: 100%;
+
+    display: block;
+
+    text-decoration: none;
+
+    color: #e91e63;
+
+    font-weight: bold;
+
+    padding: 10px;
+
+    border-radius: 20px;
+
+    transition: .3s;
+}
+
+.detay-btn:hover {
+    background: #fff0f6;
+}
+
+/* SEPETE EKLE */
+
+.sepete-ekle {
+    width: 100%;
+
+    border: none;
+
+    background: #ffcc00;
+
+    color: #333;
+
+    padding: 12px;
+
+    border-radius: 25px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.sepete-ekle:hover {
+    background: #ff1493;
+
+    color: white;
+}
+
+/* =========================
+   ÜRÜNLERİ KAPAT
+========================= */
+
+.kapat-btn {
+    display: block;
+
+    margin: 30px auto 10px;
+
+    border: none;
+
+    background: #ff1493;
+
+    color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+/* =========================
+   HAKKIMIZDA
+========================= */
+
+section.normal-section {
+    width: calc(100% - 30px);
+
+    max-width: 900px;
+
+    margin: 40px auto;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    text-align: center;
+
+    background: white;
+
+    box-shadow:
+        0 5px 15px rgba(255,105,180,.18);
+}
+
+.normal-section h2 {
+    color: #e91e63;
+}
+
+/* =========================
+   İLETİŞİM
+========================= */
+
+#iletisim {
+    background: #ffe0ed !important;
+}
+
+.iletisim-formu {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.iletisim-formu input,
+.iletisim-formu textarea {
+    width: 100%;
+
+    max-width: 500px;
+
+    padding: 14px;
+
+    border: 2px solid #ff69b4;
+
+    border-radius: 15px;
+
+    outline: none;
+
+    font-family: Arial;
+}
+
+.iletisim-formu textarea {
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+.iletisim-formu button {
+    border: none;
+
+    background: #ff1493;
+
+    color: white;
+
+    padding: 12px 25px;
+
+    border-radius: 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+/* =========================
+   ÖDEME
+========================= */
+
+#odeme {
+    background: #fff4b8 !important;
+}
+
+.odeme-kartlari {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.odeme-karti {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    text-align: center;
+}
+
+.odeme-karti h3 {
+    color: #e91e63;
+}
+
+.odeme-link {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    background: #ff1493;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 12px 22px;
+
+    border-radius: 25px;
+
+    font-weight: bold;
+}
+
+/* =========================
+   FAVORİLER
+========================= */
+
+#favoriler {
+    display: none;
+
+    width: calc(100% - 30px);
+
+    max-width: 700px;
+
+    margin: 30px auto;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.12);
+}
+
+#favoriler h2 {
+    text-align: center;
+
+    color: #e91e63;
+}
+
+.favori-urun {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    margin: 8px 0;
+
+    background: #fff5f8;
+
+    border-radius: 12px;
+}
+
+.favori-urun button {
+    border: none;
+
+    background: #ffcc00;
+
+    padding: 8px 12px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+/* =========================
+   SEPET PANELİ
+========================= */
+
+#sepet-panel {
+    display: none;
+
+    position: fixed;
+
+    top: 75px;
+
+    right: 15px;
+
+    z-index: 10000;
+
+    width: 350px;
+
+    max-width: calc(100% - 30px);
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border: 2px solid #ff69b4;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+}
+
+#sepet-panel h2 {
+    color: #e91e63;
+
+    text-align: center;
+}
+
+.sepet-urun {
+    background: #fff5f8;
+
+    border-radius: 12px;
+
+    padding: 12px;
+
+    margin: 10px 0;
+}
+
+.sepet-urun-ust {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 8px;
+}
+
+.adet-kontrol {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+.adet-kontrol button {
+    width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    background: #ffcc00;
+
+    border-radius: 50%;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.sepet-toplam {
+    text-align: center;
+
+    color: #e91e63;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+}
+
+.sepet-kapat {
+    width: 100%;
+
+    border: none;
+
+    background: #ff1493;
+
+    color: white;
+
+    padding: 11px;
+
+    border-radius: 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    margin-top: 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #ff1493;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 40px;
+}
+
+footer h3 {
+    margin-top: 0;
+}
+
+footer a {
+    color: white;
+
+    text-decoration: none;
+
+    margin: 5px;
+}
+
+/* =========================
+   MOBİL
+========================= */
+
+@media (max-width: 900px) {
+
+    .urun-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .odeme-kartlari {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    nav {
+        gap: 4px;
+
+        padding: 8px;
+    }
+
+    nav button,
+    nav a {
+        font-size: 14px;
+
+        padding: 8px 9px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .urun-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .urun-karti {
+        max-width: 380px;
+
+        margin: auto;
+    }
+
+    .arama-kutusu {
+        flex-direction: column;
+    }
+
+    .arama-kutusu button {
+        padding: 12px;
+    }
+
+    #sepet-panel {
+        right: 10px;
+
+        width: calc(100% - 20px);
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="duyuru">
+🚚 4000 TL ve üzeri alışverişlerde KARGO BEDAVA! 🎉
+</div>
+
+<nav>
+
+<button onclick="urunleriAc()">
+🛍️ Ürünler
+</button>
+
+<a href="odeme.html">
+💳 Ödeme
+</a>
+
+<button onclick="bolumeGit('hakkimizda')">
+❤️ Hakkımızda
+</button>
+
+<button onclick="bolumeGit('iletisim')">
+📞 İletişim
+</button>
+
+<button onclick="favorileriAc()">
+❤️ Favoriler
+</button>
+
+<button id="sepetikon" onclick="sepetiAc()">
+🛒 Sepet
+<span id="sepet-sayi">0</span>
+</button>
+
+</nav>
+
+<header>
+
+<h1>🧵 Yargül Terzi</h1>
+
+<p class="marka-slogani">
+✨ Evinize şıklık katan dokunuşlar ✨
+</p>
+
+<p>
+✨ Şık ve kaliteli pike takımları için doğru adres!
+</p>
+
+</header>
+
+<section class="hosgeldin">
+
+<h2>
+Nevresim Dünyasına Hoş Geldiniz!
+</h2>
+
+<p>
+Yatak odanızı güzelleştirecek şık ve kaliteli
+pike takımlarını keşfedin.
+</p>
+
+<div class="urun-butons">
+
+<button onclick="urunleriAc()">
+🛍️ Ürünleri İncele
+</button>
+
+<button onclick="urunleriKapat()">
+✕ Ürünleri Kapat
+</button>
+
+</div>
+
+</section>
+
+<div class="arama-kutusu">
+
+<input
+    type="text"
+    id="arama"
+    placeholder="🔍 Ürün ara..."
+    oninput="ara()">
+
+<button onclick="ara()">
+🔍 Ara
+</button>
+
+</div>
+<section id="urunler">
+
+<h2 class="urun-baslik">
+🛍️ Ürünlerimiz
+</h2>
+
+<div class="urun-grid" id="urun-grid">
+
+
+<!-- 1 -->
+
+<div class="urun-karti">
+
+<img src="pembe.jpg"
+     alt="Premium Pembe Pike Takımı">
+
+<h3>
+🌸 Premium Pembe Pike Takımı
+</h3>
+
+<p class="urun-aciklama">
+Yumuşak dokusu ve zarif pembe desenleriyle
+yatak odanıza şıklık katın.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Premium Pembe Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="urun-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Premium Pembe Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 2 -->
+
+<div class="urun-karti">
+
+<img src="kiremit.jpg"
+     alt="Premium Kiremit Pike Takımı">
+
+<h3>
+🌼 Premium Kiremit Pike Takımı
+</h3>
+
+<p class="urun-aciklama">
+Yumuşak dokusu ve zarif kiremit desenleriyle
+yatak odanıza şıklık katın.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Premium Kiremit Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="kiremit-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Premium Kiremit Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 3 -->
+
+<div class="urun-karti">
+
+<img src="daisy".jpg"
+     alt="Daisy Dream Pike Takımı">
+
+<h3>
+🌼 Daisy Dream Pike Takımı
+</h3>
+
+<p class="urun-aciklama">
+Yumuşak dokusu ve papatya desenleriyle
+yatak odanıza şıklık katın.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Daisy Dream Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="daisy-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Daisy Dream Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 4 -->
+
+<div class="urun-karti">
+
+<img src="lavinya.jpg"
+     alt="Lavinya Pike Takımı">
+
+<h3>
+🌸 Lavinya Pike Takımı
+</h3>
+
+<p class="urun-aciklama">
+Yumuşak dokusu ve zarif mavi çiçek
+desenleriyle yatak odanıza şıklık katın.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Lavinya Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="lavinya-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Lavinya Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 5 -->
+
+<div class="urun-karti">
+
+<img src="pembe-ruya.jpg"
+     alt="Pembe Rüya Pike Takımı">
+
+<h3>
+🌷 Pembe Rüya Pike Takımı
+</h3>
+
+<p class="urun-aciklama">
+Pembe tonlarının zarafeti ve çiçek desenlerinin
+uyumuyla şık bir görünüm.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Pembe Rüya Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="pembe-ruya-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Pembe Rüya Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 6 -->
+
+<div class="urun-karti">
+
+<img src="pudra.jpg"
+     alt="Pudra Esintisi Pike Takımı">
+
+<h3>
+🌸 Pudra Esintisi Pike Takımı
+</h3>
+
+<p class="urun-aciklama">
+Yumuşak pudra tonları ve zarif geometrik
+desenleriyle huzurlu ve şık bir atmosfer.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Tek kişilik
+</p>
+
+<div class="fiyat">₺1699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Pudra Esintisi Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="pudra-esintisi-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Pudra Esintisi Pike Takımı',1699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 7 -->
+
+<div class="urun-karti">
+
+<img src="pembe-cicek.jpg"
+     alt="Pembe Çiçek Bahçesi Pike Takımı">
+
+<h3>
+🌸 Pembe Çiçek Bahçesi
+</h3>
+
+<p class="urun-aciklama">
+Zarif pembe çiçek desenleriyle romantik
+ve şık bir görünüm.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Pembe Çiçek Bahçesi Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="pembe-cicek-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Pembe Çiçek Bahçesi Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 8 -->
+
+<div class="urun-karti">
+
+<img src="lavanta.jpg"
+     alt="Lavanta Çiçek Bahçesi Pike Takımı">
+
+<h3>
+💜 Lavanta Çiçek Bahçesi
+</h3>
+
+<p class="urun-aciklama">
+Doğadan ilham alan zarif lavanta desenleriyle
+ferah ve huzurlu bir atmosfer.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Lavanta Çiçek Bahçesi Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="lavanta-cicek-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Lavanta Çiçek Bahçesi Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 9 -->
+
+<div class="urun-karti">
+
+<img src="gri-inci.jpg"
+     alt="Gri İnci Pike Takımı">
+
+<h3>
+🤍 Gri İnci Pike Takımı
+</h3>
+
+<p class="urun-aciklama">
+Modern gri desenleriyle sade ve şık
+bir görünüm kazandırır.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Gri İnci Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="gri-inci-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Gri İnci Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="urun-karti">
+
+<img src="luna.jpg"
+     alt="Luna Çiçek Bahçesi Pike Takımı">
+
+<h3>
+🌷 Luna Çiçek Bahçesi
+</h3>
+
+<p class="urun-aciklama">
+Zarif çiçek desenleriyle ferah ve huzurlu
+bir atmosfer.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Luna Çiçek Bahçesi Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="luna-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Luna Çiçek Bahçesi Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="urun-karti">
+
+<img src="pembe-zerafet.jpg"
+     alt="Pembe Zerafet Pike Takımı">
+
+<h3>
+🌸 Pembe Zerafet Pike Takımı
+</h3>
+
+<p class="urun-aciklama">
+Pudra pembe zemini ve zarif beyaz çiçek
+desenleriyle romantik bir hava katar.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Pembe Zerafet Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="pembe-zerafet-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Pembe Zerafet Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="urun-karti">
+
+<img src="mavi-bahar.jpg"
+     alt="Mavi Bahar Pike Takımı">
+
+<h3>
+💙 Mavi Bahar Pike Takımı
+</h3>
+
+<p class="urun-aciklama">
+Pastel mavi zemini ve zarif beyaz çiçek
+desenleriyle ferah bir atmosfer.
+</p>
+
+<p class="urun-ozellik">
+✔️ Yumuşak ve kaliteli kumaş<br>
+✔️ Şık modern tasarım<br>
+✔️ Kolay yıkanabilir<br>
+✔️ Çift kişilik
+</p>
+
+<div class="fiyat">₺2699</div>
+
+<div class="urun-butonlari">
+
+<button class="favori-btn"
+onclick="favoriyeEkle('Mavi Bahar Pike Takımı')">
+♡ Favorilere Ekle
+</button>
+
+<a class="detay-btn"
+href="mavi-bahar-detay.html">
+🔎 Detayları Gör
+</a>
+
+<button class="sepete-ekle"
+onclick="sepeteEkle('Mavi Bahar Pike Takımı',2699)">
+🛒 Sepete Ekle
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+<button
+class="kapat-btn"
+onclick="urunleriKapat()">
+
+✕ Ürünleri Kapat
+
+</button>
+
+</section>
+
+
+<!-- HAKKIMIZDA -->
+
+<section
+id="hakkimizda"
+class="normal-section">
+
+<h2>❤️ Hakkımızda</h2>
+
+<p>
+Yargül Terzi olarak kaliteli,
+şık ve kullanışlı ürünleri
+sizlerle buluşturuyoruz.
+</p>
+
+<p>
+🧵 Özenli işçilik
+<br>
+✨ Kaliteli ürünler
+<br>
+👤 Müşteri memnuniyeti
+</p>
+
+</section>
+
+
+<!-- İLETİŞİM -->
+
+<section
+id="iletisim"
+class="normal-section">
+
+<h2>📞 İletişim</h2>
+
+<p>
+Sipariş ve bilgi almak için
+bizimle iletişime geçebilirsiniz.
+</p>
+
+<p>
+📱 Telefon:
++90 545 821 20 28
+</p>
+
+<p>
+📍 Cumhuriyet Mah.
+İmar Sokak No:14/A
+Manisa / Saruhanlı
+</p>
+
+<form
+class="iletisim-formu"
+onsubmit="mesajGonder(event)">
+
+<input
+type="email"
+placeholder="E-posta adresiniz"
+required>
+
+<textarea
+placeholder="Mesajınız"
+required></textarea>
+
+<button type="submit">
+Mesaj Gönder
+</button>
+
+</form>
+
+</section>
+
+
+<!-- ÖDEME -->
+
+<section
+id="odeme"
+class="normal-section">
+
+<h2>💳 Ödeme Seçenekleri</h2>
+
+<div class="odeme-kartlari">
+
+<div class="odeme-karti">
+
+<h3>💵 Kapıda Ödeme</h3>
+
+<p>
+Siparişinizi teslim alırken
+ödeme yapabilirsiniz.
+</p>
+
+</div>
+
+<div class="odeme-karti">
+
+<h3>🏦 Havale / EFT</h3>
+
+<p>
+Banka üzerinden ödeme
+yapabilirsiniz.
+</p>
+
+</div>
+
+<div class="odeme-karti">
+
+<h3>💳 Kartla Ödeme</h3>
+
+<p>
+Kartla ödeme sayfasına
+geçebilirsiniz.
+</p>
+
+<a
+class="odeme-link"
+href="kart-odeme.html">
+
+Kartla Öde
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FAVORİLER -->
+
+<section id="favoriler">
+
+<h2>
+❤️ Favorilerim
+</h2>
+
+<div id="favori-listesi">
+
+<p>
+❤️ Henüz favori ürününüz yok.
+</p>
+
+</div>
+
+</section>
+<!-- =========================
+     SEPET PANELİ
+========================= -->
+
+<div id="sepet-panel">
+
+<h2>
+🛒 Sepetim
+</h2>
+
+<div id="urun-listesi">
+</div>
+
+<div
+class="sepet-toplam"
+id="toplam">
+
+Toplam: ₺0
+
+</div>
+
+<button
+class="sepet-kapat"
+onclick="sepetiKapat()">
+
+Kapat
+
+</button>
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<h3>
+🧵 Yargül Terzi
+</h3>
+
+<p>
+✨ Şık ve kaliteli pike takımları ✨
+</p>
+
+<p>
+© 2026 Yargül Terzi -
+Tüm hakları saklıdır.
+</p>
+
+<div>
+
+<a href="#">
+📸 Instagram
+</a>
+
+<a href="#">
+👍 Facebook
+</a>
+
+<a href="#">
+💬 WhatsApp
+</a>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   ÜRÜNLERİ AÇ
+========================= */
+
+function urunleriAc() {
+
+    const alan =
+        document.getElementById("urunler");
+
+    alan.style.display = "block";
+
+    alan.scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   ÜRÜNLERİ KAPAT
+========================= */
+
+function urunleriKapat() {
+
+    const alan =
+        document.getElementById("urunler");
+
+    alan.style.display = "none";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   BÖLÜME GİT
+========================= */
+
+function bolumeGit(id) {
+
+    const alan =
+        document.getElementById(id);
+
+    if (alan) {
+
+        alan.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+}
+
+
+/* =========================
+   SEPET
+========================= */
+
+let sepet =
+    JSON.parse(
+        localStorage.getItem("sepet")
+    ) || [];
+
+
+/* ÜRÜN EKLE */
+
+function sepeteEkle(isim, fiyat) {
+
+    let bulunan =
+        sepet.find(
+            urun => urun.isim === isim
+        );
+
+    if (bulunan) {
+
+        bulunan.adet++;
+
+    } else {
+
+        sepet.push({
+
+            isim: isim,
+
+            fiyat: fiyat,
+
+            adet: 1
+
+        });
+
+    }
+
+    sepetiGuncelle();
+
+    sepetiAc();
+}
+
+
+/* SEPETİ GÜNCELLE */
+
+function sepetiGuncelle() {
+
+    localStorage.setItem(
+        "sepet",
+        JSON.stringify(sepet)
+    );
+
+    const liste =
+        document.getElementById(
+            "urun-listesi"
+        );
+
+    const sayi =
+        document.getElementById(
+            "sepet-sayi"
+        );
+
+    const toplam =
+        document.getElementById(
+            "toplam"
+        );
+
+    if (!liste || !sayi || !toplam) {
+        return;
+    }
+
+    let html = "";
+
+    let toplamAdet = 0;
+
+    let toplamFiyat = 0;
+
+
+    sepet.forEach(
+        function(urun, index) {
+
+            toplamAdet +=
+                urun.adet;
+
+            toplamFiyat +=
+                urun.fiyat *
+                urun.adet;
+
+
+            html += `
+
+            <div class="sepet-urun">
+
+                <div class="sepet-urun-ust">
+
+                    <strong>
+                        ${urun.isim}
+                    </strong>
+
+                    <strong>
+                        ₺${urun.fiyat * urun.adet}
+                    </strong>
+
+                </div>
+
+
+                <div class="adet-kontrol">
+
+                    <button
+                    onclick="adetAzalt(${index})">
+                        −
+                    </button>
+
+                    <span>
+                        ${urun.adet}
+                    </span>
+
+                    <button
+                    onclick="adetArtir(${index})">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }
+    );
+
+
+    if (sepet.length === 0) {
+
+        html = `
+            <p style="text-align:center;">
+                🛒 Sepetiniz boş.
+            </p>
+        `;
+
+    }
+
+
+    liste.innerHTML = html;
+
+    sayi.textContent =
+        toplamAdet;
+
+    toplam.textContent =
+        "Toplam: ₺" +
+        toplamFiyat;
+}
+
+
+/* ADET ARTIR */
+
+function adetArtir(index) {
+
+    if (!sepet[index]) {
+        return;
+    }
+
+    sepet[index].adet++;
+
+    sepetiGuncelle();
+}
+
+
+/* ADET AZALT */
+
+function adetAzalt(index) {
+
+    if (!sepet[index]) {
+        return;
+    }
+
+    sepet[index].adet--;
+
+    if (
+        sepet[index].adet <= 0
+    ) {
+
+        sepet.splice(index, 1);
+
+    }
+
+    sepetiGuncelle();
+}
+
+
+/* SEPETİ AÇ */
+
+function sepetiAc() {
+
+    const panel =
+        document.getElementById(
+            "sepet-panel"
+        );
+
+    if (!panel) {
+        return;
+    }
+
+    sepetiGuncelle();
+
+    if (
+        panel.style.display === "block"
+    ) {
+
+        panel.style.display = "none";
+
+    } else {
+
+        panel.style.display = "block";
+
+    }
+}
+
+
+/* SEPETİ KAPAT */
+
+function sepetiKapat() {
+
+    const panel =
+        document.getElementById(
+            "sepet-panel"
+        );
+
+    if (panel) {
+
+        panel.style.display = "none";
+
+    }
+}
+
+
+/* =========================
+   ARAMA
+========================= */
+
+function ara() {
+
+    const input =
+        document.getElementById(
+            "arama"
+        );
+
+    const aranan =
+        input.value
+        .toLowerCase()
+        .trim();
+
+
+    const urunler =
+        document.querySelectorAll(
+            "#urun-grid .urun-karti"
+        );
+
+
+    urunler.forEach(
+        function(urun) {
+
+            const metin =
+                urun.textContent
+                .toLowerCase();
+
+
+            if (
+                aranan === "" ||
+                metin.includes(aranan)
+            ) {
+
+                urun.style.display =
+                    "flex";
+
+            } else {
+
+                urun.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    if (aranan !== "") {
+
+        document.getElementById(
+            "urunler"
+        ).style.display = "block";
+
+    }
+}
+
+
+/* =========================
+   FAVORİLER
+========================= */
+
+let favoriler =
+    JSON.parse(
+        localStorage.getItem(
+            "favoriler"
+        )
+    ) || [];
+
+
+/* FAVORİYE EKLE */
+
+function favoriyeEkle(isim) {
+
+    if (
+        !favoriler.includes(isim)
+    ) {
+
+        favoriler.push(isim);
+
+        localStorage.setItem(
+            "favoriler",
+            JSON.stringify(favoriler)
+        );
+
+        alert(
+            "❤️ " +
+            isim +
+            " favorilere eklendi!"
+        );
+
+    } else {
+
+        alert(
+            "❤️ Bu ürün zaten favorilerde!"
+        );
+
+    }
+
+    favorileriGoster();
+}
+
+
+/* FAVORİLERİ GÖSTER */
+
+function favorileriGoster() {
+
+    const alan =
+        document.getElementById(
+            "favori-listesi"
+        );
+
+    if (!alan) {
+        return;
+    }
+
+
+    if (
+        favoriler.length === 0
+    ) {
+
+        alan.innerHTML = `
+            <p>
+                ❤️ Henüz favori ürününüz yok.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    let html = "";
+
+
+    favoriler.forEach(
+        function(urun, index) {
+
+            html += `
+
+            <div class="favori-urun">
+
+                <strong>
+                    ❤️ ${urun}
+                </strong>
+
+                <button
+                onclick="favoridenCikar(${index})">
+
+                    ✕ Çıkar
+
+                </button>
+
+            </div>
+
+            `;
+
+        }
+    );
+
+
+    alan.innerHTML = html;
+}
+
+
+/* FAVORİDEN ÇIKAR */
+
+function favoridenCikar(index) {
+
+    favoriler.splice(
+        index,
+        1
+    );
+
+    localStorage.setItem(
+        "favoriler",
+        JSON.stringify(favoriler)
+    );
+
+    favorileriGoster();
+}
+
+
+/* FAVORİLERİ AÇ */
+
+function favorileriAc() {
+
+    const alan =
+        document.getElementById(
+            "favoriler"
+        );
+
+    if (!alan) {
+        return;
+    }
+
+
+    if (
+        alan.style.display === "block"
+    ) {
+
+        alan.style.display = "none";
+
+    } else {
+
+        alan.style.display = "block";
+
+        favorileriGoster();
+
+        alan.scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+}
+
+
+/* =========================
+   İLETİŞİM FORMU
+========================= */
+
+function mesajGonder(event) {
+
+    event.preventDefault();
+
+    alert(
+        "📩 Mesajınız hazırlandı. Teşekkür ederiz!"
+    );
+
+    event.target.reset();
+}
+
+
+/* =========================
+   SAYFA AÇILINCA SEPET SAYISI
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        sepetiGuncelle();
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
